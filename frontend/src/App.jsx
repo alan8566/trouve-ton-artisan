@@ -22,8 +22,6 @@ function App() {
         <Route path="/categories" element={<Categories />} />
         <Route path="/search" element={<Search />} />
         <Route path="/legal" element={<Legal />} />
-
-        {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
 

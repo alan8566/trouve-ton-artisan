@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getCategories } from "../api/api";
-import API_URL from "../services/api";
+import API_URL from "../api/api";
 import axios from "axios";
 
 axios.get(`${API_URL}/artisans`)
