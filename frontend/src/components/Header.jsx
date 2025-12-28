@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getCategories } from "../api/api";
+import API_URL from "../services/api";
+import axios from "axios";
+
+axios.get(`${API_URL}/artisans`)
+  .then(res => console.log(res.data));
 
 function Header() {
   const [categories, setCategories] = useState([]);
