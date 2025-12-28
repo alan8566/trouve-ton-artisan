@@ -8,7 +8,7 @@ const errorHandler = require('./middleware/errorHandler');
 const authRoutes = require('./routes/auth.routes');
 const userRoutes = require('./routes/users.routes');
 const categoryRoutes = require('./routes/categories.routes');
-const artisanRoutes = require('./routes/artisans.routes');
+const artisanRoutes = require('./routes/artisan.routes');
 
 const app = express();
 
@@ -23,7 +23,7 @@ app.use('/api/auth', authRoutes);
 // Routes protégées
 app.use('/api/users', userRoutes);
 app.use('/api/categories', categoryRoutes);
-app.use('/api/artisans', artisanRoutes);
+app.use('/api/artisan', artisanRoutes);
 
 // 404
 app.use((req, res) => {
