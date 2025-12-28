@@ -21,3 +21,7 @@ export async function getArtisansByCategory(category) {
 export async function searchArtisans(query) {
   return fetch(`${API_URL}/artisans/search/query?q=${query}`).then(r => r.json());
 }
+
+export async function searchArtisans(query) {
+  return fetch(`${API_URL}/artisans/search?q=${query}`).then(r => r.json());
+}
