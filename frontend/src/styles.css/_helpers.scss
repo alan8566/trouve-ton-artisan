@@ -1,0 +1,16 @@
+// Classes utilitaires
+.text-primary {
+  color: $blue !important;
+}
+
+.bg-primary-light {
+  background: $blue-light;
+}
+
+.shadow-custom {
+  box-shadow: $shadow;
+}
+
+.rounded-custom {
+  border-radius: $radius;
+}

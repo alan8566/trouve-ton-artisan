@@ -1,0 +1,19 @@
+@import "./variables";
+@import "./mixins";
+
+.card {
+  border: none;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  @include smooth;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  }
+
+  .card-title {
+    color: $blue-dark;
+    font-weight: 700;
+  }
+}
