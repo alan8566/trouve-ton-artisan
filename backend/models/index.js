@@ -1,20 +1,8 @@
-const sequelize = require('../config/db');
-const User = require('./user.model');
-const Category = require('./categories.model');
-const Artisan = require('./artisan.model');
-const ArtisanCategory = require('./artisanCategory.model');
+import { sequelize } from "../config/database.js";
+import Category from "./Category.js";
+import Artisan from "./Artisan.js";
 
-// Relations
-User.hasOne(Artisan, { foreignKey: 'userId' });
-Artisan.belongsTo(User, { foreignKey: 'userId' });
+Category.hasMany(Artisan, { foreignKey: "categoryId" });
+Artisan.belongsTo(Category, { foreignKey: "categoryId" });
 
-Artisan.belongsToMany(Category, { through: ArtisanCategory, foreignKey: 'artisanId' });
-Category.belongsToMany(Artisan, { through: ArtisanCategory, foreignKey: 'categoryId' });
-
-module.exports = {
-  sequelize,
-  User,
-  Category,
-  Artisan,
-  ArtisanCategory,
-};
+export { sequelize, Category, Artisan };

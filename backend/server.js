@@ -1,35 +1,33 @@
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import { sequelize } from "./models/index.js";
+import categoryRoutes from "./routes/categories.js";
+import artisanRoutes from "./routes/artisans.js";
 
-const corsConfig = require('./middleware/corsConfig');
-const errorHandler = require('./middleware/errorHandler');
-
-const authRoutes = require('./routes/auth.routes');
-const userRoutes = require('./routes/users.routes');
-const categoryRoutes = require('./routes/categories.routes');
-const artisanRoutes = require('./routes/artisan.routes');
-
+dotenv.config();
 const app = express();
 
-app.use(helmet());
-app.use(cors(corsConfig));
+app.use(cors());
 app.use(express.json());
 
-// Routes publiques
-app.use('/api/auth', authRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/artisans", artisanRoutes);
 
-// Routes protégées
-app.use('/api/users', userRoutes);
-app.use('/api/categories', categoryRoutes);
-app.use('/api/artisans', artisanRoutes);
+async function startServer() {
+  try {
+    console.log("Connexion à PostgreSQL...");
+    await sequelize.authenticate();
+    console.log("OK");
 
-// 404
-app.use((req, res) => {
-  res.status(404).json({ message: 'Route introuvable' });
-});
+    await sequelize.sync();
+    console.log("Modèles synchronisés");
 
-// Gestion des erreurs
-app.use(errorHandler);
+    const PORT = process.env.PORT || 4023;
+    app.listen(PORT, () => console.log(`Backend sur ${PORT}`));
+  } catch (err) {
+    console.error("Erreur :", err);
+  }
+}
 
-module.exports = app;
+startServer();
