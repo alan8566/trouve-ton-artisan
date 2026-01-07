@@ -1,10 +1,10 @@
 function StarRating({ rating }) {
-  const stars = Array.from({ length: 5 }, (_, i) => i < rating);
-
   return (
-    <div>
-      {stars.map((filled, i) => (
-        <span key={i} style={{ color: filled ? "#f5c518" : "#ccc" }}>★</span>
+    <div className="stars">
+      {[1,2,3,4,5].map((n) => (
+        <span key={n} className={n <= rating ? "star filled" : "star"}>
+          ★
+        </span>
       ))}
     </div>
   );

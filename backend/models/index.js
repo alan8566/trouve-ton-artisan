@@ -3,8 +3,10 @@ import { Artisan } from "./artisan.js";
 import { Category } from "./category.js";
 import { ArtisanCategory } from "./artisanCategory.js";
 
-// Relation Many-to-Many : un artisan peut avoir plusieurs catégories
-// et une catégorie peut contenir plusieurs artisans
+
+Artisan.hasMany(Review, { foreignKey: "artisanId" });
+Review.belongsTo(Artisan, { foreignKey: "artisanId" });
+
 Artisan.belongsToMany(Category, {
   through: ArtisanCategory,
   foreignKey: "artisanId",

@@ -2,26 +2,26 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="bg-dark text-white mt-5 pt-4 pb-4">
-      <div className="container">
+    <footer className="footer-gradient footer-glass pt-5 pb-4 mt-5">
+      <div className="container text-white">
 
-        <div className="row">
+        <div className="row justify-content-center text-center">
 
           {/* MENU LÉGAL */}
-          <div className="col-md-4 mb-3">
-            <h5 className="fw-bold">Pages légales</h5>
+          <div className="col-md-4 mb-4">
+            <h5 className="fw-bold mb-3">Pages légales</h5>
             <ul className="list-unstyled">
-              <li><Link to="/mentions-legales" className="text-white text-decoration-none">Mentions légales</Link></li>
-              <li><Link to="/donnees-personnelles" className="text-white text-decoration-none">Données personnelles</Link></li>
-              <li><Link to="/accessibilite" className="text-white text-decoration-none">Accessibilité</Link></li>
-              <li><Link to="/cookies" className="text-white text-decoration-none">Cookies</Link></li>
+              <li><Link to="/mentions-legales" className="footer-link">Mentions légales</Link></li>
+              <li><Link to="/donnees-personnelles" className="footer-link">Données personnelles</Link></li>
+              <li><Link to="/accessibilite" className="footer-link">Accessibilité</Link></li>
+              <li><Link to="/cookies" className="footer-link">Cookies</Link></li>
             </ul>
           </div>
 
           {/* CONTACT */}
-          <div className="col-md-8">
-            <h5 className="fw-bold">Contact</h5>
-            <p className="mb-0">
+          <div className="col-md-4 mb-4">
+            <h5 className="fw-bold mb-3">Contact</h5>
+            <p className="mb-0 opacity-90">
               101 cours Charlemagne<br />
               CS 20033<br />
               69269 LYON CEDEX 02<br />
@@ -32,9 +32,9 @@ function Footer() {
 
         </div>
 
-        <hr className="border-secondary mt-4" />
+        <hr className="footer-separator" />
 
-        <p className="text-center text-secondary mb-0">
+        <p className="text-center opacity-75 mb-0 mt-3">
           © {new Date().getFullYear()} Région Auvergne-Rhône-Alpes — Trouve ton artisan
         </p>
 

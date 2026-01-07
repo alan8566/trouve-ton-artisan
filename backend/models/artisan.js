@@ -65,7 +65,7 @@ export const Artisan = sequelize.define(
       allowNull: true,
     },
 
-    // Image (si tu veux en ajouter plus tard)
+    // Image 
     imageUrl: {
       type: DataTypes.STRING,
       allowNull: true,

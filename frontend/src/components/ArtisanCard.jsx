@@ -3,18 +3,25 @@ import StarRating from "./StarRating.jsx";
 
 function ArtisanCard({ artisan }) {
   return (
-    <div className="card mb-3 shadow-sm">
+    <div className="card mb-3 shadow-sm card-glass card-gradient card-accent-success">
       <div className="card-body">
-        <h5 className="card-title">
+
+        {/* BADGES */}
+        <div className="d-flex gap-2 mb-2">
+          <span className="badge badge-top">Top artisan</span>
+          <span className="badge badge-hot">Populaire</span>
+        </div>
+
+        <h5 className="card-title fw-bold">
           {artisan.companyName || `${artisan.firstName} ${artisan.lastName}`}
         </h5>
 
-        <StarRating rating={artisan.averageRating || 0} />
+        <StarRating rating={artisan.rating || 0} />
 
-        <p className="card-text">{artisan.specialty}</p>
-        <p className="card-text text-muted">{artisan.city}</p>
+        <p className="text-light mb-1">{artisan.specialty}</p>
+        <p className="text-light">{artisan.city}</p>
 
-        <Link to={`/artisans/${artisan.id}`} className="btn btn-primary">
+        <Link to={`/artisans/${artisan.id}`} className="btn btn-primary mt-2 btn-card">
           Voir la fiche
         </Link>
       </div>

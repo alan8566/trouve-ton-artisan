@@ -32,8 +32,7 @@ function ArtisanDetails() {
         {/* INFOS */}
         <div className="col-md-8">
           <h2 className="fw-bold">{artisan.companyName || `${artisan.firstName} ${artisan.lastName}`}</h2>
-          <StarRating rating={artisan.averageRating || 0} />
-
+          <StarRating rating={artisan.rating || 0} />
           <p className="mt-3">
             <strong>Spécialité :</strong> {artisan.specialty}
           </p>

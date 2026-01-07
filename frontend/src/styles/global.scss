@@ -9,7 +9,6 @@ $success: #82b864;
 $light: #f1f8fc;
 $dark: #384050;
 
-
 /* --------------------------------------------- */
 /* 2. IMPORT BOOTSTRAP                           */
 /* --------------------------------------------- */
@@ -191,192 +190,346 @@ body {
 }
 
 /* --------------------------------------------- */
-/* 1. VARIABLES DE COULEURS (avant Bootstrap)     */
+/* BADGES HOME                                   */
 /* --------------------------------------------- */
 
-$primary: #0074c7;
-$secondary: #00497c;
-$danger: #cd2c2e;
-$success: #82b864;
-$light: #f1f8fc;
-$dark: #384050;
+.badge-top {
+  background-color: $success;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  animation: popIn 0.4s ease-out;
+}
 
-/* --------------------------------------------- */
-/* 2. IMPORT BOOTSTRAP                           */
-/* --------------------------------------------- */
+.badge-hot {
+  background-color: $danger;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  animation: popIn 0.4s ease-out;
+}
 
-@import "bootstrap/scss/bootstrap";
-
-/* --------------------------------------------- */
-/* 3. STYLES GLOBAUX                             */
-/* --------------------------------------------- */
-
-body {
-  font-family: Arial, sans-serif;
-  background: #f1f8fc;
+@keyframes popIn {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 /* --------------------------------------------- */
-/* 4. ANIMATIONS GÉNÉRALES                       */
+/* CARD ACCENTS                                  */
 /* --------------------------------------------- */
 
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 0.8s ease forwards;
+.card-accent-success {
+  border-left: 6px solid $success;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
+.card-accent-danger {
+  border-left: 6px solid $danger;
 }
 
-.slide-up {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: slideUp 0.8s ease forwards;
+.card-glass {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-@keyframes slideUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.card-glass:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
-/* Délais progressifs */
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.35s; }
-.delay-3 { animation-delay: 0.5s; }
-.delay-4 { animation-delay: 0.65s; }
-
-/* --------------------------------------------- */
-/* 5. HEADER ANIMÉ                               */
-/* --------------------------------------------- */
-
-.header-slide-down {
-  transform: translateY(-40px);
-  opacity: 0;
-  animation: slideDown 0.6s ease-out forwards;
+.card-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 116, 199, 0.9),
+    rgba(0, 73, 124, 0.9)
+  );
+  color: white;
+  border-radius: 16px;
+  padding: 1rem;
 }
 
-@keyframes slideDown {
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.card-gradient .card-title,
+.card-gradient p,
+.card-gradient .btn {
+  color: white !important;
 }
 
-/* Transition couleur au scroll */
-.header-scroll {
+.badge-top {
+  background-color: $success;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  animation: popIn 0.4s ease-out;
+}
+
+.badge-hot {
+  background-color: $danger;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  animation: popIn 0.4s ease-out;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.card-accent-success {
+  border-left: 6px solid $success;
+}
+
+.card-accent-danger {
+  border-left: 6px solid $danger;
+}
+
+.header-animated-gradient {
+  background: linear-gradient(
+    120deg,
+    #0074c7,
+    #00497c,
+    #0074c7
+  );
+  background-size: 300% 300%;
+  animation: gradientFlow 8s ease infinite;
   transition: background-color 0.6s ease, box-shadow 0.6s ease;
 }
 
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.header-animated-gradient {
+  background: linear-gradient(
+    120deg,
+    #0074c7,
+    #00497c,
+    #0074c7
+  );
+  background-size: 300% 300%;
+  animation: gradientFlow 8s ease infinite;
+  transition: background-color 0.6s ease, box-shadow 0.6s ease;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .header-scroll.scrolled {
-  background-color: #00497c !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  background: #00497c !important;
+  animation: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
-/* --------------------------------------------- */
-/* 6. ANIMATION DES LIENS DU MENU                */
-/* --------------------------------------------- */
+.search-box {
+  width: 250px;
+}
 
-.nav-animated {
+.search-input {
+  border-radius: 20px;
+  padding: 6px 14px;
+  border: none;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+  box-shadow: 0 0 8px rgba(255,255,255,0.6);
+}
+
+.header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.header-appear {
   opacity: 0;
-  transform: translateY(-10px);
-  animation: fadeSlide 0.6s ease forwards;
+  transform: translateY(-20px);
+  animation: headerFadeIn 0.6s ease-out forwards;
 }
 
-@keyframes fadeSlide {
+@keyframes headerFadeIn {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Hover underline */
-.nav-link {
-  position: relative;
-  transition: color 0.3s ease;
+.header-scroll.scrolled {
+  background: #00497c !important;
+  animation: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
-.nav-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 0%;
-  height: 2px;
-  background: white;
-  transition: width 0.3s ease;
+.search-box {
+  width: 250px;
 }
 
-.nav-link:hover::after {
-  width: 100%;
-}
-
-/* --------------------------------------------- */
-/* 7. TRANSITION DE COULEUR DES PAGES            */
-/* --------------------------------------------- */
-
-.page-transition {
-  background: #f1f8fc;
-  transition: background 0.6s ease;
-}
-
-.page-transition.scrolled {
-  background: #e0f0ff;
-}
-
-/* --------------------------------------------- */
-/*  PREMIUM CARD DESIGN                          */
-/* --------------------------------------------- */
-
-.card-premium {
+.search-input {
+  border-radius: 20px;
+  padding: 6px 14px;
   border: none;
-  overflow: hidden;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+  box-shadow: 0 0 8px rgba(255,255,255,0.6);
+}
+.step-box {
+  background: linear-gradient(135deg, #f1f8fc, #e0ecf4);
   border-radius: 12px;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-  background: white;
-  position: relative;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
 }
 
-.card-premium:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+.step-box:hover {
+  transform: translateY(-6px);
 }
 
-/* Image zoom */
-.card-premium img {
-  transition: transform 0.5s ease;
+.step-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0074c7;
+  margin-bottom: 10px;
 }
 
-.card-premium:hover img {
-  transform: scale(1.08);
+.card-gradient .btn-primary {
+  background-color: white !important;
+  color: #00497c !important;
+  border: none;
+  font-weight: 600;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Overlay dégradé */
-.card-premium::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.25));
-  opacity: 0;
-  transition: opacity 0.4s ease;
+.card-gradient .btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(255,255,255,0.4);
 }
 
-.card-premium:hover::before {
+/* Bouton premium dans les cards */
+.btn-card {
+  background-color: white !important;
+  color: #00497c !important;
+  border: none !important;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(255,255,255,0.4);
+}
+
+.footer-gradient {
+  background: linear-gradient(
+    120deg,
+    #0074c7,
+    #00497c,
+    #0074c7
+  );
+  background-size: 300% 300%;
+  animation: gradientFlow 8s ease infinite;
+  color: white;
+}
+
+.footer-glass {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.25);
+}
+
+.footer-separator {
+  border-color: rgba(255,255,255,0.3) !important;
+}
+
+.footer-link {
+  color: white !important;
+  opacity: 0.85;
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+}
+
+.footer-link:hover {
   opacity: 1;
 }
 
-/* Bouton animé */
-.card-premium .btn {
-  transform: translateY(10px);
-  opacity: 0;
-  transition: all 0.35s ease;
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.card-premium:hover .btn {
-  transform: translateY(0);
+.header-gradient {
+  background: linear-gradient(
+    120deg,
+    #0074c7,
+    #00497c,
+    #0074c7
+  );
+  background-size: 300% 300%;
+  animation: gradientFlow 8s ease infinite;
+}
+
+.header-glass {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.nav-link {
+  color: white !important;
+  opacity: 0.85;
+  font-weight: 500;
+  transition: opacity 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
   opacity: 1;
+}
+
+.search-bar input {
+  border-radius: 8px;
+}
+
+.search-bar button {
+  background-color: white !important;
+  color: #00497c !important;
+  border-radius: 8px;
+  padding: 6px 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.search-bar button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255,255,255,0.4);
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
