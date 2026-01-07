@@ -9,6 +9,7 @@ $success: #82b864;
 $light: #f1f8fc;
 $dark: #384050;
 
+
 /* --------------------------------------------- */
 /* 2. IMPORT BOOTSTRAP                           */
 /* --------------------------------------------- */
@@ -134,4 +135,248 @@ body {
 
 .page-transition.scrolled {
   background: #e0f0ff;
+}
+
+/* --------------------------------------------- */
+/*  PREMIUM CARD DESIGN                          */
+/* --------------------------------------------- */
+
+.card-premium {
+  border: none;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  background: white;
+  position: relative;
+}
+
+.card-premium:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* Image zoom */
+.card-premium img {
+  transition: transform 0.5s ease;
+}
+
+.card-premium:hover img {
+  transform: scale(1.08);
+}
+
+/* Overlay dégradé */
+.card-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.25));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card-premium:hover::before {
+  opacity: 1;
+}
+
+/* Bouton animé */
+.card-premium .btn {
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.35s ease;
+}
+
+.card-premium:hover .btn {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* --------------------------------------------- */
+/* 1. VARIABLES DE COULEURS (avant Bootstrap)     */
+/* --------------------------------------------- */
+
+$primary: #0074c7;
+$secondary: #00497c;
+$danger: #cd2c2e;
+$success: #82b864;
+$light: #f1f8fc;
+$dark: #384050;
+
+/* --------------------------------------------- */
+/* 2. IMPORT BOOTSTRAP                           */
+/* --------------------------------------------- */
+
+@import "bootstrap/scss/bootstrap";
+
+/* --------------------------------------------- */
+/* 3. STYLES GLOBAUX                             */
+/* --------------------------------------------- */
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f1f8fc;
+}
+
+/* --------------------------------------------- */
+/* 4. ANIMATIONS GÉNÉRALES                       */
+/* --------------------------------------------- */
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.8s ease forwards;
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Délais progressifs */
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.35s; }
+.delay-3 { animation-delay: 0.5s; }
+.delay-4 { animation-delay: 0.65s; }
+
+/* --------------------------------------------- */
+/* 5. HEADER ANIMÉ                               */
+/* --------------------------------------------- */
+
+.header-slide-down {
+  transform: translateY(-40px);
+  opacity: 0;
+  animation: slideDown 0.6s ease-out forwards;
+}
+
+@keyframes slideDown {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Transition couleur au scroll */
+.header-scroll {
+  transition: background-color 0.6s ease, box-shadow 0.6s ease;
+}
+
+.header-scroll.scrolled {
+  background-color: #00497c !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* --------------------------------------------- */
+/* 6. ANIMATION DES LIENS DU MENU                */
+/* --------------------------------------------- */
+
+.nav-animated {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeSlide 0.6s ease forwards;
+}
+
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover underline */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* --------------------------------------------- */
+/* 7. TRANSITION DE COULEUR DES PAGES            */
+/* --------------------------------------------- */
+
+.page-transition {
+  background: #f1f8fc;
+  transition: background 0.6s ease;
+}
+
+.page-transition.scrolled {
+  background: #e0f0ff;
+}
+
+/* --------------------------------------------- */
+/*  PREMIUM CARD DESIGN                          */
+/* --------------------------------------------- */
+
+.card-premium {
+  border: none;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  background: white;
+  position: relative;
+}
+
+.card-premium:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* Image zoom */
+.card-premium img {
+  transition: transform 0.5s ease;
+}
+
+.card-premium:hover img {
+  transform: scale(1.08);
+}
+
+/* Overlay dégradé */
+.card-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.25));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card-premium:hover::before {
+  opacity: 1;
+}
+
+/* Bouton animé */
+.card-premium .btn {
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.35s ease;
+}
+
+.card-premium:hover .btn {
+  transform: translateY(0);
+  opacity: 1;
 }

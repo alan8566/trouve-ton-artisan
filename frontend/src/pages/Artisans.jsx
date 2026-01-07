@@ -10,11 +10,25 @@ function Artisans() {
   const query = new URLSearchParams(location.search).get("q");
 
   useEffect(() => {
-    if (query) {
-      searchArtisans({ q: query }).then(setArtisans);
-    } else {
-      fetchArtisans().then(setArtisans);
-    }
+    const loadArtisans = async () => {
+      let data;
+
+      if (query) {
+        data = await searchArtisans({ q: query });
+      } else {
+        data = await fetchArtisans();
+      }
+
+      // Ajout du badge Top artisan (exemple : premier artisan)
+      const withTop = data.map((a, i) => ({
+        ...a,
+        isTop: i === 0, 
+      }));
+
+      setArtisans(withTop);
+    };
+
+    loadArtisans();
   }, [query]);
 
   return (
@@ -31,8 +45,15 @@ function Artisans() {
       <div className="row g-4">
         {artisans.map((artisan, index) => (
           <div className="col-md-6 col-lg-4" key={artisan.id}>
-            <div className={`card shadow-sm border-0 slide-up delay-${(index % 4) + 1}`}>
+            
+            <div className={`card card-premium slide-up delay-${(index % 4) + 1}`}>
 
+              {/* BADGE TOP ARTISAN */}
+              {artisan.isTop && (
+                <div className="top-badge">Top artisan</div>
+              )}
+
+              {/* IMAGE */}
               <img
                 src={`https://via.placeholder.com/600x400.png?text=${encodeURIComponent(
                   artisan.companyName || artisan.firstName
@@ -41,6 +62,7 @@ function Artisans() {
                 alt="artisan"
               />
 
+              {/* CONTENU */}
               <div className="card-body">
                 <h5 className="card-title fw-bold">
                   {artisan.companyName || `${artisan.firstName} ${artisan.lastName}`}
