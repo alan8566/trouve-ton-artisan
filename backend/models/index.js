@@ -3,10 +3,7 @@ import { Artisan } from "./artisan.js";
 import { Category } from "./category.js";
 import { ArtisanCategory } from "./artisanCategory.js";
 
-
-Artisan.hasMany(Review, { foreignKey: "artisanId" });
-Review.belongsTo(Artisan, { foreignKey: "artisanId" });
-
+// Relations Artisan <-> Category (Many-to-Many)
 Artisan.belongsToMany(Category, {
   through: ArtisanCategory,
   foreignKey: "artisanId",

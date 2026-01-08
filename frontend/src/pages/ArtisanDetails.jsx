@@ -21,21 +21,25 @@ function ArtisanDetails() {
         {/* PHOTO */}
         <div className="col-md-4 text-center">
           <img
-            src={`https://via.placeholder.com/300x300.png?text=${encodeURIComponent(
-              artisan.companyName || artisan.firstName
-            )}`}
-            alt="Photo artisan"
+            src={artisan.imageUrl}
+            alt={artisan.companyName}
             className="img-fluid rounded shadow-sm"
+            style={{ maxWidth: "300px", objectFit: "cover" }}
           />
         </div>
 
         {/* INFOS */}
         <div className="col-md-8">
-          <h2 className="fw-bold">{artisan.companyName || `${artisan.firstName} ${artisan.lastName}`}</h2>
+          <h2 className="fw-bold">
+            {artisan.companyName || `${artisan.firstName} ${artisan.lastName}`}
+          </h2>
+
           <StarRating rating={artisan.rating || 0} />
+
           <p className="mt-3">
-            <strong>Spécialité :</strong> {artisan.specialty}
+            <strong>Spécialité :</strong> {artisan.speciality}
           </p>
+
           <p>
             <strong>Localisation :</strong> {artisan.city}
           </p>

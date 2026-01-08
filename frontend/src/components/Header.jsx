@@ -23,8 +23,13 @@ function Header() {
       <nav className="navbar navbar-expand-lg navbar-dark container py-3">
 
         {/* LOGO */}
-        <Link className="navbar-brand fw-bold fs-4 text-white" to="/">
-          Trouve Ton Artisan
+        <Link className="navbar-brand d-flex align-items-center text-white" to="/">
+          <img
+            src="/images/logotrouvetonartisan.png"
+            alt="Logo Trouve Ton Artisan"
+            className="site-logo"
+          />
+          
         </Link>
 
         <button

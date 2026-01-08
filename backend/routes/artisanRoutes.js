@@ -68,6 +68,7 @@ router.get("/", async (req, res, next) => {
       include: { model: Category, through: { attributes: [] } },
       order: [["createdAt", "DESC"]],
     });
+
     res.json(artisans);
   } catch (err) {
     next(err);
@@ -75,16 +76,18 @@ router.get("/", async (req, res, next) => {
 });
 
 /* ---------------------------------------------
-   📌 GET un artisan par ID
+   📌 GET un artisan par ID (VERSION NETTOYÉE)
 --------------------------------------------- */
 router.get("/:id", async (req, res, next) => {
   try {
     const artisan = await Artisan.findByPk(req.params.id, {
-      include: { model: Category, through: { attributes: [] } },
+      include: [
+        { model: Category, through: { attributes: [] } }
+      ],
     });
 
     if (!artisan) {
-      return res.status(404).json({ error: true, message: "Artisan non trouvé" });
+      return res.status(404).json({ error: "Artisan non trouvé" });
     }
 
     res.json(artisan);
@@ -125,7 +128,7 @@ router.put("/:id", async (req, res, next) => {
 
     const artisan = await Artisan.findByPk(req.params.id);
     if (!artisan) {
-      return res.status(404).json({ error: true, message: "Artisan non trouvé" });
+      return res.status(404).json({ error: "Artisan non trouvé" });
     }
 
     await artisan.update(data);
@@ -151,55 +154,11 @@ router.delete("/:id", async (req, res, next) => {
   try {
     const artisan = await Artisan.findByPk(req.params.id);
     if (!artisan) {
-      return res.status(404).json({ error: true, message: "Artisan non trouvé" });
+      return res.status(404).json({ error: "Artisan non trouvé" });
     }
 
     await artisan.destroy();
     res.status(204).send();
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.get("/:id/rating", async (req, res, next) => {
-  try {
-    const reviews = await Review.findAll({
-      where: { artisanId: req.params.id },
-    });
-
-    if (reviews.length === 0) {
-      return res.json({ averageRating: 0 });
-    }
-
-    const averageRating =
-      reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
-
-    res.json({ averageRating });
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.get("/:id", async (req, res, next) => {
-  try {
-    const artisan = await Artisan.findByPk(req.params.id, {
-      include: Review,
-    });
-
-    if (!artisan) {
-      return res.status(404).json({ error: "Artisan non trouvé" });
-    }
-
-    const reviews = artisan.Reviews;
-    const averageRating =
-      reviews.length > 0
-        ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
-        : 0;
-
-    res.json({
-      ...artisan.toJSON(),
-      averageRating,
-    });
   } catch (err) {
     next(err);
   }

@@ -12,12 +12,16 @@ function CategoryArtisans() {
   }, [id]);
 
   return (
-    <section>
-      <h2>Artisans de la catégorie</h2>
+    <section className="container my-4">
+      <h2 className="mb-4">Artisans de la catégorie</h2>
 
-      {artisans.map((artisan) => (
-        <ArtisanCard key={artisan.id} artisan={artisan} />
-      ))}
+      <div className="row g-4">
+        {artisans.map((artisan) => (
+          <div key={artisan.id} className="col-12 col-sm-6 col-md-4 col-lg-3">
+            <ArtisanCard artisan={artisan} />
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
